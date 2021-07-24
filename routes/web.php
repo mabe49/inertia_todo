@@ -25,7 +25,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/user', 'App\Http\Controllers\UserController')->middleware('auth');
-Route::resource('/task', 'App\Http\Controllers\TaskController')->middleware('auth')
+Route::resource('/task', 'App\Http\Controllers\TaskController')
     ->names([
         'index' => 'task.index',
         'create' => 'task.create',
