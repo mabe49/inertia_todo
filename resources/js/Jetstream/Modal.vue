@@ -63,6 +63,7 @@ export default {
             const close = () => {
                 if (props.closeable) {
                     emit('close')
+                    console.log("close");
                 }
             }
 

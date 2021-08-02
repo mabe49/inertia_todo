@@ -22,7 +22,7 @@
                                 </jet-nav-link>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('task.index')" :active="route().current('task.index')">
+                                <jet-nav-link :href="route('task.index')" :active="route().current('task.*')">
                                     ToDo管理
                                 </jet-nav-link>
                             </div>
@@ -180,15 +180,15 @@
                             </form>
 
                             <!-- Team Management -->
-                            <template v-if="$page.props.jetstream.hasTeamFeatures">
+                            <!-- <template v-if="$page.props.jetstream.hasTeamFeatures">
                                 <div class="border-t border-gray-200"></div>
 
                                 <div class="block px-4 py-2 text-xs text-gray-400">
                                     Manage Team
-                                </div>
+                                </div> -->
 
                                 <!-- Team Settings -->
-                                <jet-responsive-nav-link :href="route('teams.show', $page.props.user.current_team)" :active="route().current('teams.show')">
+                                <!-- <jet-responsive-nav-link :href="route('teams.show', $page.props.user.current_team)" :active="route().current('teams.show')">
                                     Team Settings
                                 </jet-responsive-nav-link>
 
@@ -196,10 +196,10 @@
                                     Create New Team
                                 </jet-responsive-nav-link>
 
-                                <div class="border-t border-gray-200"></div>
+                                <div class="border-t border-gray-200"></div> -->
 
                                 <!-- Team Switcher -->
-                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                <!-- <div class="block px-4 py-2 text-xs text-gray-400">
                                     Switch Teams
                                 </div>
 
@@ -213,7 +213,7 @@
                                         </jet-responsive-nav-link>
                                     </form>
                                 </template>
-                            </template>
+                            </template> -->
                         </div>
                     </div>
                 </div>

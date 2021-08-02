@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Redirect;
 
 class TaskController extends Controller
 {
@@ -25,7 +27,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-
+        return Inertia::render('Task/Create');
     }
 
     /**
@@ -36,7 +38,16 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+
+        Validator::make($input, [
+            'title' => ['required'],
+            'status' => ['required'],
+            'description' => ['required']
+        ])->validateWithBag('taskCreate');
+
+        Task::create($input);
+        return Redirect::route('task.index');
     }
 
     /**
