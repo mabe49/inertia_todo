@@ -38,15 +38,15 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
 
-        Validator::make($input, [
+        $request->validate([
             'title' => ['required'],
             'status' => ['required'],
-            'description' => ['required']
-        ])->validateWithBag('taskCreate');
+            'description' => ['required'],
+        ]);
 
-        Task::create($input);
+        Task::create($request->only('title', 'status', 'description'));
+
         return Redirect::route('task.index');
     }
 
