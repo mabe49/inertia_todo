@@ -18,7 +18,7 @@
               class="mt-1 block w-full"
               v-model="form.title"
             />
-            <jet-input-error :message="form.error('title')" class="mt-2" />
+            <jet-input-error :message="form.error.title" class="mt-2" />
           </div>
           <div class="col-span-6 sm:col-span-4">
             <jet-label for="status" value="進行状況" />
@@ -48,7 +48,7 @@
               />
               <jet-label for="status" value="保留" class="mr-4 ml-2" />
             </div>
-            <!-- <jet-input-error :message="form.error('status')" class="mt-2" /> -->
+            <jet-input-error :message="form.error.status" class="mt-2" />
           </div>
 
           <div class="col-span-6 sm:col-span-4">
@@ -59,7 +59,7 @@
               class="mt-1 block w-full"
               v-model="form.description"
             />
-            <!-- <jet-input-error :message="form.error('description')" class="mt-2" /> -->
+            <jet-input-error :message="form.error.description" class="mt-2" />
           </div>
         </template>
         <template #actions>
@@ -80,6 +80,10 @@ import JetButton from "@/Jetstream/Button";
 import JetInputError from "@/Jetstream/InputError";
 
 export default {
+  props: {
+    errors: Object,
+  },
+
   components: {
     AppLayout,
     JetFormSection,
@@ -91,12 +95,16 @@ export default {
   },
   data() {
     return {
+
+      title: "",
+      status: null,
+      description: "",
+
       form: this.$inertia.form(
         {
-          _method: "POST",
-          title: "",
-          status: null,
-          description: "",
+          title: this.title,
+          status: this.status,
+          description: this.description,
         },
         {
           bag: "taskCreate",
@@ -107,8 +115,10 @@ export default {
   },
   methods: {
     taskCreate() {
-      console.log(this.form);
-      this.form.post(route("task.store"), this.form);
+      console.log(errors);
+      this.form.post(route("task.store"), {
+          preserveScroll: true
+      });
     },
   },
 };
