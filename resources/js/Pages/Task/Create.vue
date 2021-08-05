@@ -96,15 +96,11 @@ export default {
   data() {
     return {
 
-      title: "",
-      status: null,
-      description: "",
-
       form: this.$inertia.form(
         {
-          title: this.title,
-          status: this.status,
-          description: this.description,
+          title: null,
+          status: null,
+          description: null,
         },
         {
           bag: "taskCreate",
@@ -116,9 +112,7 @@ export default {
   methods: {
     taskCreate() {
       console.log(errors);
-      this.form.post(route("task.store"), {
-          preserveScroll: true
-      });
+      this.form.post(route("task.store"), this.form);
     },
   },
 };
