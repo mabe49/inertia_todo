@@ -18,7 +18,7 @@
               class="mt-1 block w-full"
               v-model="form.title"
             />
-            <jet-input-error :message="form.error.title" class="mt-2" />
+            <jet-input-error :message="form.errors.title" class="mt-2" />
           </div>
           <div class="col-span-6 sm:col-span-4">
             <jet-label for="status" value="進行状況" />
@@ -48,7 +48,7 @@
               />
               <jet-label for="status" value="保留" class="mr-4 ml-2" />
             </div>
-            <jet-input-error :message="form.error.status" class="mt-2" />
+            <jet-input-error :message="form.errors.status" class="mt-2" />
           </div>
 
           <div class="col-span-6 sm:col-span-4">
@@ -59,7 +59,7 @@
               class="mt-1 block w-full"
               v-model="form.description"
             />
-            <jet-input-error :message="form.error.description" class="mt-2" />
+            <jet-input-error :message="form.errors.description" class="mt-2" />
           </div>
         </template>
         <template #actions>
@@ -81,7 +81,9 @@ import JetInputError from "@/Jetstream/InputError";
 
 export default {
   props: {
-    errors: Object,
+    errors: {
+        type: Object,
+    }
   },
 
   components: {
