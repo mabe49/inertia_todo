@@ -13,7 +13,7 @@
 
         <table class="shadow-md">
           <thead>
-            <tr class="bg-gray-500 font-bold">
+            <tr class="bg-gray-300 font-bold">
               <th class="border border-black px-8 py-2">タスク</th>
               <th class="border border-black px-8 py-2">進捗</th>
               <th class="border border-black px-4 py-2">詳細</th>

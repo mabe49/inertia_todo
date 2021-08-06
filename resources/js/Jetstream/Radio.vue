@@ -9,7 +9,7 @@ export default {
 
     props: {
         checked: {
-            type: [Array, String],
+            type: [Array, Number],
             default: false,
         },
         value: {
