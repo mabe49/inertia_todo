@@ -87,11 +87,7 @@ class TaskController extends Controller
             'description' => ['required'],
         ]);
 
-        $task = Task::find($id);
-
-        $task->title = $request->title;
-        $task->status = $request->status;
-        $task->description = $request->description;
+        $task = Task::find($id)->update($request->only('title', 'status', 'description'));
 
         return Redirect::route('task.index');
     }

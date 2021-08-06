@@ -26,25 +26,25 @@
               <jet-radio
                 name="status"
                 v-model:checked="form.status"
-                value=0
+                value="0"
               />
               <jet-label for="status" value="未着手" class="mr-4 ml-2" />
               <jet-radio
                 name="status"
                 v-model:checked="form.status"
-                value=1
+                value="1"
               />
               <jet-label for="status" value="進行中" class="mr-4 ml-2" />
               <jet-radio
                 name="status"
                 v-model:checked="form.status"
-                value=2
+                value="2"
               />
               <jet-label for="status" value="完了" class="mr-4 ml-2" />
               <jet-radio
                 name="status"
                 v-model:checked="form.status"
-                value="Number(3)"
+                value="3"
               />
               <jet-label for="status" value="保留" class="mr-4 ml-2" />
             </div>
@@ -86,6 +86,9 @@ export default {
     },
     task: {
         type: Object,
+        title: String,
+        status: Number,
+        description: String,
     },
   },
 
@@ -115,7 +118,8 @@ export default {
   },
   methods: {
     taskEdit() {
-      this.form.post(route("task.update"), this.task.id);
+      console.log(this.task.id);
+      this.form.put(route("task.update", this.task.id));
     },
   },
 };
