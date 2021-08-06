@@ -6,9 +6,9 @@
       </h2>
     </template>
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-      <jet-form-section @submitted="taskCreate">
-        <template #title>ToDo作成</template>
-        <template #description>ToDoの追加を行います</template>
+      <jet-form-section @submitted="taskEdit">
+        <template #title>ToDo更新</template>
+        <template #description>ToDoの更新を行います</template>
         <template #form>
           <div class="col-span-6 sm:col-span-4">
             <jet-label for="title" value="タイトル" />
@@ -63,7 +63,7 @@
           </div>
         </template>
         <template #actions>
-          <jet-button class="bg-blue-700">作成</jet-button>
+          <jet-button class="bg-blue-700">更新</jet-button>
         </template>
       </jet-form-section>
     </div>
@@ -83,7 +83,10 @@ export default {
   props: {
     errors: {
         type: Object,
-    }
+    },
+    task: {
+        type: Object,
+    },
   },
 
   components: {
@@ -100,9 +103,9 @@ export default {
 
       form: this.$inertia.form(
         {
-          title: null,
-          status: null,
-          description: null,
+          title: this.task.title,
+          status: this.task.status,
+          description: this.task.description,
         },
         {
           resetOnSuccess: false,
@@ -111,9 +114,8 @@ export default {
     };
   },
   methods: {
-    taskCreate() {
-      console.log(this.errors);
-      this.form.post(route("task.store"));
+    taskEdit() {
+      this.form.post(route("task.update"), this.task.id);
     },
   },
 };

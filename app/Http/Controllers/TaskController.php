@@ -67,9 +67,9 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Task $task)
     {
-        //
+        return Inertia::render('Task/Edit',['task' => $task]);
     }
 
     /**
@@ -81,7 +81,19 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => ['required'],
+            'status' => ['required'],
+            'description' => ['required'],
+        ]);
+
+        $task = Task::find($id);
+
+        $task->title = $request->title;
+        $task->status = $request->status;
+        $task->description = $request->description;
+
+        return Redirect::route('task.index');
     }
 
     /**
@@ -90,8 +102,10 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Task $task)
     {
-        //
+        $task->delete();
+
+        return Redirect::route('task.index');
     }
 }
