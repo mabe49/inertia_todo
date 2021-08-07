@@ -56,9 +56,10 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Task $task)
     {
-        //
+        return Inertia::render('Task/Show', ['task' => $task]);
+
     }
 
     /**

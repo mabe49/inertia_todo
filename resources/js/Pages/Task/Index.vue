@@ -33,8 +33,10 @@
               <td class="border border-black px-8 py-2">
                 {{ progress[task.status] }}
               </td>
-              <td class="border border-black px-4 py-2">
-                {{ task.description }}
+              <td class="border px-4 py-2 text-center border-black">
+                <inertia-link :href="route('task.show', task.id)">
+                  <jet-button class="bg-blue-500 text-base">詳細</jet-button>
+                </inertia-link>
               </td>
               <td class="border px-4 py-2 text-center border-black">
                 <inertia-link :href="route('task.edit', task.id)">

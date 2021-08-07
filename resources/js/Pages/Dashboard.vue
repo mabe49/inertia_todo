@@ -13,6 +13,7 @@
                 </div>
             </div>
         </div>
+        <input type="date">
     </app-layout>
 </template>
 
